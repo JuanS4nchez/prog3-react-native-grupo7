@@ -13,6 +13,7 @@ export default class Profile extends Component {
   constructor() {
     super();
     this.state = {
+      posts: [],
       currentPosts: [],
       loading: true,
     };
@@ -34,7 +35,6 @@ export default class Profile extends Component {
           posts: currentPosts,
           loading: false,
         });
-        () => console.log(this.state.posts)
       });
   }
 
@@ -43,10 +43,11 @@ export default class Profile extends Component {
   }
 
   render() {
+    console.log("ARBOL", this.state.currentPosts)
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{auth.currentUser.email}</Text>
-        <Text style={styles.subtitle}>Cantidad de posteos: </Text>
+        <Text style={styles.subtitle}>Cantidad de posteos: {this.state.posts.length} </Text>
         <FlatList
           data={this.state.posts}
           keyExtractor={(item) => item.id.toString()}
