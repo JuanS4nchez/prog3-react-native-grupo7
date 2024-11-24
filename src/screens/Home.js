@@ -1,29 +1,39 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, FlatList } from "react-native";
-import { auth, db} from "../firebase/config";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+} from "react-native";
+import { auth, db } from "../firebase/config";
 import Posts from "../components/Posts";
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loading: true
+    };
   }
   componentDidMount() {
     db.collection("posts")
-    .orderBy("createdAt", "desc")
-    .onSnapshot((docs) => {
-      let posts = [];
-      docs.forEach((doc) => {
-        posts.push({
-          id: doc.id,
-          data: doc.data(),
+      .orderBy("createdAt", "desc")
+      .onSnapshot((docs) => {
+        let posts = [];
+        docs.forEach((doc) => {
+          posts.push({
+            id: doc.id,
+            data: doc.data(),
+          });
         });
+        this.setState(
+          {
+            posteos: posts,
+            loading: false,
+          },
+          () => console.log(this.state.posteos)
+        );
       });
-      this.setState({
-        posteos: posts,
-        loading: false,
-      }, ()=> console.log(this.state.posteos));
-    });
   }
   render() {
     return (
@@ -31,10 +41,10 @@ class Home extends Component {
         <Text style={styles.title}>¡Bienvenido a la Home!</Text>
         <Text style={styles.subtitle}>Estás en la página principal.</Text>
         <FlatList
-            data={this.state.posteos}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => <Posts posteo={item} />}
-          />
+          data={this.state.posteos}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => <Posts posteo={item} />}
+        />
       </View>
     );
   }

@@ -19,6 +19,19 @@ export default class Posts extends Component {
       cantLikes: 0,
     };
   }
+
+  deletePost = () => {
+    db.collection("posts")
+      .doc(this.props.posteo.id)
+      .delete()
+      .then(() => {
+        console.log("Post eliminado");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   like() {
     this.setState({
       like: true,
@@ -47,6 +60,16 @@ export default class Posts extends Component {
             </TouchableOpacity>
           )}
           <Text>Cant de Likes: {this.state.cantLikes}</Text>
+          {auth.currentUser.email == this.props.posteo.data.email ? (
+            <TouchableOpacity
+              onPress={() => this.deletePost()}
+              style={styles.deleteButton}
+            >
+              <Text style={styles.deleteText}>Borrar Posteo</Text>
+            </TouchableOpacity>
+          ) : (
+            <Text></Text>
+          )}
         </View>
       </View>
     );
@@ -75,5 +98,18 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#555",
     marginTop: 5,
+  },
+  deleteButton: {
+    backgroundColor: "#d9534f",
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    alignItems: "center",
+    marginTop: 10,
+  },
+  deleteText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 12,
   },
 });
