@@ -20,6 +20,14 @@ export default class Register extends Component {
     };
   }
 
+  componentDidMount(){
+    auth.onAuthStateChanged(user => {
+      if(user){
+        this.props.navigation.navigate("HomeMenu")
+      }
+    })
+  }
+
   handleRegister() {
     auth
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
