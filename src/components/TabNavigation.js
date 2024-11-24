@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Home";
+import Profile from "../screens/Profile";
+import NuevoPost from "../screens/NuevoPost";
 import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import AntDesign from '@expo/vector-icons/AntDesign';
-
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 const Tab = createBottomTabNavigator();
 const TabNavigation = () => {
@@ -25,16 +26,17 @@ const TabNavigation = () => {
           ),
         }}
       />
-       <Tab.Screen
+      <Tab.Screen
         name="NuevoPost"
         component={NuevoPost}
         options={{
-          tabBarIcon: () => <AntDesign name="pluscircle" size={24} color="black" />,
+          tabBarIcon: () => (
+            <AntDesign name="pluscircle" size={24} color="black" />
+          ),
         }}
       />
     </Tab.Navigator>
   );
 };
-
 
 export default TabNavigation;

@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import {View,Text,TouchableOpacity,TextInput, StyleSheet} from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  StyleSheet,
+} from "react-native";
 import { db, auth } from "../firebase/config";
 
 export default class Login extends Component {
@@ -13,13 +19,18 @@ export default class Login extends Component {
     };
   }
 
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      console.log(user);
+    });
+  }
+
   handleLogIn() {
-    console.log(this.state.email)
-    console.log(this.state.password)
-    auth.signInWithEmailAndPassword(this.state.email, this.state.password)
+    auth
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((response) => {
-        this.setState({loggedIn: true, error: "" })
-        this.props.navigation.navigate("Register")
+        this.setState({ loggedIn: true, error: "" });
+        this.props.navigation.navigate("HomeMenu");
       })
       .catch((error) => {
         console.log(error);
@@ -31,7 +42,9 @@ export default class Login extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Login</Text>
-        {this.state.error !== "" ? <Text style={styles.errorMsg}>{this.state.error}</Text> : null}
+        {this.state.error !== "" ? (
+          <Text style={styles.errorMsg}>{this.state.error}</Text>
+        ) : null}
         <TextInput
           style={styles.input}
           keyboardType="email-address"
@@ -46,7 +59,10 @@ export default class Login extends Component {
           onChangeText={(text) => this.setState({ password: text })}
           value={this.state.password}
         />
-        <TouchableOpacity onPress={() => this.handleLogIn()} style={styles.boton}>
+        <TouchableOpacity
+          onPress={() => this.handleLogIn()}
+          style={styles.boton}
+        >
           <Text style={styles.text}>Ingresar</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -104,6 +120,6 @@ const styles = StyleSheet.create({
   },
   errorMsg: {
     fontSize: 10,
-    color: "red"
-  }
+    color: "red",
+  },
 });

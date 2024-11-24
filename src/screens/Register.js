@@ -20,7 +20,7 @@ export default class Register extends Component {
     };
   }
 
-  onSubmit() {
+  handleRegister() {
     auth
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((response) => {
@@ -36,7 +36,7 @@ export default class Register extends Component {
       })
       .catch((error) => {
         console.log(error);
-        this.setState({ error: "Fallo en el registro." });
+        this.setState({ error: "El mail y/o la contraseña son invalidos" });
       });
   }
 
@@ -44,6 +44,9 @@ export default class Register extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Registro</Text>
+        {this.state.error !== "" ? (
+          <Text style={styles.errorMsg}>{this.state.error}</Text>
+        ) : null}
         <TextInput
           style={styles.input}
           keyboardType="email-address"
@@ -64,7 +67,10 @@ export default class Register extends Component {
           onChangeText={(text) => this.setState({ userName: text })}
           value={this.state.userName}
         />
-        <TouchableOpacity onPress={() => this.onSubmit()} style={styles.boton}>
+        <TouchableOpacity
+          onPress={() => this.handleRegister()}
+          style={styles.boton}
+        >
           <Text style={styles.text}>Registrarse</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -119,5 +125,9 @@ const styles = StyleSheet.create({
     color: "#007bff",
     fontSize: 16,
     fontStyle: "italic",
+  },
+  errorMsg: {
+    fontSize: 10,
+    color: "red",
   },
 });
