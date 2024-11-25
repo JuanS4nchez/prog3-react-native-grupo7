@@ -1,10 +1,4 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  FieldValue,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import React, { Component } from "react";
 import { auth, db } from "../firebase/config";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -106,10 +100,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    backgroundColor: "#1E201E",
+    backgroundColor: "#black",
   },
   postContainer: {
-    backgroundColor: "#3C3D37",
+    backgroundColor: "#ECDFCC",
     borderRadius: 8,
     padding: 15,
     marginBottom: 10,
@@ -122,15 +116,15 @@ const styles = StyleSheet.create({
   email: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#ECDFCC", 
+    color: "#181C14",
   },
   message: {
     fontSize: 14,
-    color: "#697565", 
+    color: "#181C14",
     marginTop: 5,
   },
   deleteButton: {
-    backgroundColor: "#697565", 
+    backgroundColor: "#3C3D37",
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 8,
@@ -138,7 +132,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   deleteText: {
-    color: "#ECDFCC", 
+    color: "#ECDFCC",
     fontWeight: "bold",
     fontSize: 12,
   },

@@ -128,7 +128,7 @@ export default class Register extends Component {
         ) : null}
         <TextInput
           style={styles.input}
-          placeholder="userName"
+          placeholder="username"
           onChangeText={(text) => this.setState({ userName: text })}
           value={this.state.userName}
         />
@@ -152,30 +152,30 @@ export default class Register extends Component {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
+    paddingVertical: 10,
     flex: 1,
-    backgroundColor: "#1E201E", 
+    backgroundColor: "black",
   },
   input: {
     height: 40,
     paddingVertical: 10,
     paddingHorizontal: 10,
     borderWidth: 1,
-    borderColor: "#697565", 
+    borderColor: "#697565",
     borderRadius: 6,
     marginVertical: 10,
-    backgroundColor: "#3C3D37", 
-    color: "#ECDFCC", 
+    backgroundColor: "#ECDFCC",
+    color: "#181C14",
   },
   boton: {
-    backgroundColor: "#697565", 
+    backgroundColor: "#697565",
     paddingVertical: 10,
     borderRadius: 4,
     borderWidth: 1,
     borderColor: "#697565",
-    marginTop: 10,
   },
   text: {
-    color: "#ECDFCC", 
+    color: "#ECDFCC",
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 16,
@@ -184,20 +184,19 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 10,
-    color: "#ECDFCC", 
+    color: "#ECDFCC",
     textAlign: "center",
   },
   link: {
     marginTop: 10,
-    color: "#ECDFCC", 
+    color: "#ECDFCC",
     fontSize: 16,
     fontStyle: "italic",
     textAlign: "center",
   },
   errorMsg: {
     fontSize: 12,
-    color: "#FF6B6B", 
+    color: "#FF6B6B",
     marginVertical: 5,
   },
 });
-

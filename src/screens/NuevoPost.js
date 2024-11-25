@@ -35,7 +35,6 @@ export default class NuevoPost extends Component {
         likes: [],
       })
       .then(() => {
-        console.log("Post agregado exitosamente");
         this.props.navigation.navigate("Home");
       })
       .catch((error) => {
@@ -49,7 +48,6 @@ export default class NuevoPost extends Component {
       <View style={styles.container}>
         <Text style={styles.title}>Nuevo Posteo</Text>
         <Text style={styles.subtitle}>Completa los siguientes datos:</Text>
-
         <TextInput
           style={styles.input}
           placeholder="¿Qué estás pensando?"
@@ -71,37 +69,37 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#1E201E",
-    justifyContent: "center", 
+    backgroundColor: "black",
+    justifyContent: "center",
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     color: "#ECDFCC",
     marginBottom: 10,
-    textAlign: "center", 
+    textAlign: "center",
   },
   subtitle: {
     fontSize: 16,
     color: "#ECDFCC",
-    marginBottom: 20, 
-    textAlign: "center", 
+    marginBottom: 20,
+    textAlign: "center",
   },
   input: {
     height: 60,
-    borderColor: "#697565", 
+    borderColor: "#697565",
     borderWidth: 1,
     borderRadius: 8,
     padding: 10,
-    marginBottom: 20, 
-    color: "#ECDFCC", 
-    backgroundColor: "#3C3D37", 
+    marginBottom: 20,
+    color: "black",
+    backgroundColor: "#ECDFCC",
   },
   button: {
-    backgroundColor: "#3C3D37", 
+    backgroundColor: "#697565",
     padding: 15,
     borderRadius: 8,
-    alignItems: "center", 
+    alignItems: "center",
     borderWidth: 1,
     borderColor: "#697565",
   },
@@ -111,4 +109,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-

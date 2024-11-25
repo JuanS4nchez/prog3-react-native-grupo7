@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
-import { auth, db } from "../firebase/config";
+import { db } from "../firebase/config";
 import Posts from "../components/Posts";
 
 class Home extends Component {
@@ -22,16 +22,13 @@ class Home extends Component {
             data: doc.data(),
           });
         });
-        this.setState(
-          {
-            posteos: posts,
-            loading: false,
-          },
-          () => console.log(this.state.posteos)
-        );
+        this.setState({
+          posteos: posts,
+          loading: false,
+        });
       });
   }
-  
+
   render() {
     return (
       <View style={styles.container}>
@@ -51,35 +48,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#1E201E",
+    backgroundColor: "black",
     justifyContent: "center",
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#ECDFCC", 
+    color: "#ECDFCC",
     marginBottom: 10,
     textAlign: "center",
   },
   subtitle: {
     fontSize: 16,
-    color: "#697565",
+    color: "#ECDFCC",
     marginBottom: 20,
     textAlign: "center",
-  },
-  button: {
-    backgroundColor: "#3C3D37",
-    padding: 15,
-    borderRadius: 8,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#ECDFCC",
-    fontSize: 16,
-    fontWeight: "bold",
   },
 });
 
 export default Home;
-
-

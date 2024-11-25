@@ -61,10 +61,12 @@ export default class Profile extends Component {
   render() {
     return (
       <View style={styles.container}>
-         <Text style={styles.titlee}>¡Estas en el perfil!</Text>
+        <Text style={styles.main}>¡Estas en el perfil!</Text>
         <Text style={styles.title}>{this.state.userName}</Text>
         <Text style={styles.subtitle}>{auth.currentUser.email}</Text>
-        <Text>Cantidad de posteos: {this.state.posts.length}</Text>
+        <Text style={styles.text}>
+          Cantidad de posteos: {this.state.posts.length}
+        </Text>
         <FlatList
           data={this.state.posts}
           keyExtractor={(item) => item.id.toString()}
@@ -84,16 +86,16 @@ export default class Profile extends Component {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
+    paddingVertical: 20,
     flex: 1,
-    backgroundColor: "#1E201E", 
+    backgroundColor: "black",
   },
-  titlee: {
+  main: {
     fontSize: 28,
     fontWeight: "bold",
     marginBottom: 10,
     color: "#ECDFCC",
     textAlign: "center",
-
   },
   title: {
     fontSize: 28,
@@ -103,11 +105,16 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 18,
-    marginBottom: 20,
-    color: "#697565", 
+    marginBottom: 10,
+    color: "#ECDFCC",
+  },
+  text: {
+    fontSize: 14,
+    marginBottom: 10,
+    color: "#ECDFCC",
   },
   logoutButton: {
-    backgroundColor: "#3C3D37",
+    backgroundColor: "#697565",
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 8,

@@ -6,7 +6,7 @@ import {
   TextInput,
   StyleSheet,
 } from "react-native";
-import { db, auth } from "../firebase/config";
+import { auth } from "../firebase/config";
 
 export default class Login extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ export default class Login extends Component {
       .catch((error) => {
         console.log(error);
         this.setState({ error: "El mail y/o la contraseña son incorrectos" });
-      });  
+      });
   }
 
   render() {
@@ -78,25 +78,25 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
+    paddingVertical: 10,
     flex: 1,
-    backgroundColor: "#1E201E", 
+    backgroundColor: "black",
   },
   input: {
-    height: 20,
-    paddingVertical: 15,
+    height: 40,
+    paddingVertical: 10,
     paddingHorizontal: 10,
     borderWidth: 1,
-    borderColor: "#697565", 
+    borderColor: "#697565",
     borderStyle: "solid",
     borderRadius: 6,
     marginVertical: 10,
-    color: "#ECDFCC",
-    backgroundColor: "#3C3D37",
+    color: "#181C14",
+    backgroundColor: "#ECDFCC",
   },
   boton: {
-    backgroundColor: "#697565", 
-    paddingHorizontal: 10,
-    paddingVertical: 6,
+    backgroundColor: "#697565",
+    paddingVertical: 10,
     textAlign: "center",
     borderRadius: 4,
     borderWidth: 1,
@@ -104,29 +104,29 @@ const styles = StyleSheet.create({
     borderColor: "#697565",
   },
   text: {
-    color: "#ECDFCC", 
+    color: "#ECDFCC",
     textAlign: "center",
     fontWeight: "bold",
+    fontSize: 16,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 10,
-    color: "#ECDFCC", 
+    color: "#ECDFCC",
     textAlign: "center",
   },
   link: {
     marginTop: 5,
-    color: "#ECDFCC", 
+    color: "#ECDFCC",
     fontSize: 16,
     fontStyle: "italic",
     textAlign: "center",
   },
   errorMsg: {
-    fontSize: 12, 
-    color: "#ECDFCC", 
+    fontSize: 12,
+    color: "#FF6B6B",
     marginBottom: 10,
     textAlign: "center",
   },
 });
-

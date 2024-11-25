@@ -16,18 +16,18 @@ const TabNavigation = () => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: "#121212", 
+          backgroundColor: "black",
         },
-        tabBarActiveTintColor: "#f44336", 
-        tabBarInactiveTintColor: "#aaa", 
+        tabBarActiveTintColor: "#f44336",
+        tabBarInactiveTintColor: "#aaa",
       }}
     >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: () => <Entypo name="home" size={24} color="#aaa" />, 
-          headerShown: false, // Ocultar el header
+          tabBarIcon: () => <Entypo name="home" size={24} color="#aaa" />,
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -35,7 +35,7 @@ const TabNavigation = () => {
         component={Search}
         options={{
           tabBarIcon: () => (
-            <FontAwesome name="search" size={24} color="#aaa" /> 
+            <FontAwesome name="search" size={24} color="#aaa" />
           ),
           headerShown: false,
         }}
@@ -45,9 +45,9 @@ const TabNavigation = () => {
         component={Profile}
         options={{
           tabBarIcon: () => (
-            <Ionicons name="person-circle" size={24} color="#aaa" /> 
+            <Ionicons name="person-circle" size={24} color="#aaa" />
           ),
-          headerShown: false, 
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -55,7 +55,7 @@ const TabNavigation = () => {
         component={NuevoPost}
         options={{
           tabBarIcon: () => (
-            <AntDesign name="pluscircle" size={24} color="#aaa" /> 
+            <AntDesign name="pluscircle" size={24} color="#aaa" />
           ),
           headerShown: false,
         }}
