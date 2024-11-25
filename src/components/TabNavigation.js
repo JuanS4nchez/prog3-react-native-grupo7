@@ -9,14 +9,25 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Search from "../screens/Search";
 
 const Tab = createBottomTabNavigator();
+
 const TabNavigation = () => {
   return (
-    <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: "#121212", 
+        },
+        tabBarActiveTintColor: "#f44336", 
+        tabBarInactiveTintColor: "#aaa", 
+      }}
+    >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: () => <Entypo name="home" size={24} color="black" />,
+          tabBarIcon: () => <Entypo name="home" size={24} color="#aaa" />, 
+          headerShown: false, // Ocultar el header
         }}
       />
       <Tab.Screen
@@ -24,8 +35,9 @@ const TabNavigation = () => {
         component={Search}
         options={{
           tabBarIcon: () => (
-            <FontAwesome name="search" size={24} color="black" />
+            <FontAwesome name="search" size={24} color="#aaa" /> 
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -33,8 +45,9 @@ const TabNavigation = () => {
         component={Profile}
         options={{
           tabBarIcon: () => (
-            <Ionicons name="person-circle" size={24} color="black" />
+            <Ionicons name="person-circle" size={24} color="#aaa" /> 
           ),
+          headerShown: false, 
         }}
       />
       <Tab.Screen
@@ -42,8 +55,9 @@ const TabNavigation = () => {
         component={NuevoPost}
         options={{
           tabBarIcon: () => (
-            <AntDesign name="pluscircle" size={24} color="black" />
+            <AntDesign name="pluscircle" size={24} color="#aaa" /> 
           ),
+          headerShown: false,
         }}
       />
     </Tab.Navigator>

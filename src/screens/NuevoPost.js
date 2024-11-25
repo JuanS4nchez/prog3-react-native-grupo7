@@ -71,40 +71,44 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#f0f4f8", // Color de fondo suave
-    justifyContent: "center", // Centrar contenido verticalmente
+    backgroundColor: "#1E201E",
+    justifyContent: "center", 
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#333",
-    marginBottom: 10, // Espacio inferior
-    textAlign: "center", // Centrar el texto
+    color: "#ECDFCC",
+    marginBottom: 10,
+    textAlign: "center", 
   },
   subtitle: {
     fontSize: 16,
-    color: "#555",
-    marginBottom: 20, // Espacio inferior
-    textAlign: "center", // Centrar el texto
+    color: "#ECDFCC",
+    marginBottom: 20, 
+    textAlign: "center", 
   },
   input: {
     height: 60,
-    borderColor: "#ccc",
+    borderColor: "#697565", 
     borderWidth: 1,
     borderRadius: 8,
     padding: 10,
-    marginBottom: 20, // Espacio inferior
-    backgroundColor: "#ffffff", // Fondo blanco para el input
+    marginBottom: 20, 
+    color: "#ECDFCC", 
+    backgroundColor: "#3C3D37", 
   },
   button: {
-    backgroundColor: "#28a745", // Color de fondo del botón
+    backgroundColor: "#3C3D37", 
     padding: 15,
     borderRadius: 8,
-    alignItems: "center", // Centrar texto dentro del botón
+    alignItems: "center", 
+    borderWidth: 1,
+    borderColor: "#697565",
   },
   buttonText: {
-    color: "#ffffff", // Color del texto del botón
+    color: "#ECDFCC",
     fontSize: 16,
     fontWeight: "bold",
   },
 });
+

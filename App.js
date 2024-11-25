@@ -23,8 +23,8 @@ function App() {
         />
         <Stack.Screen
           name="HomeMenu"
-          component={TabNavigation}
           options={{ headerShown: false }}
+          component={TabNavigation}
         />
       </Stack.Navigator>
     </NavigationContainer>

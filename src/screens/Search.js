@@ -73,23 +73,27 @@ export default class Profile extends Component {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
-    marginTop: 20,
     flex: 1,
+    backgroundColor: "#121212", 
   },
   input: {
-    height: 20,
+    height: 50,
     paddingVertical: 15,
     paddingHorizontal: 10,
     borderWidth: 1,
-    borderColor: "#ccc",
-    borderStyle: "solid",
+    borderColor: "#444", 
     borderRadius: 6,
     marginVertical: 10,
+    color: "#fff",
+    backgroundColor: "#1e1e1e", 
+    fontSize: 16,
   },
   notFound: {
     fontSize: 15,
     fontWeight: "bold",
-    marginBottom: 10,
-    color: "#333",
+    marginTop: 20,
+    color: "#f44336", 
+    textAlign: "center",
   },
 });
+

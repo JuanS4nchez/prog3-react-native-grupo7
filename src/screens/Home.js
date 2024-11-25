@@ -51,33 +51,35 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#f0f4f8",
+    backgroundColor: "#1E201E",
     justifyContent: "center",
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#333",
+    color: "#ECDFCC", 
     marginBottom: 10,
     textAlign: "center",
   },
   subtitle: {
     fontSize: 16,
-    color: "#555",
+    color: "#697565",
     marginBottom: 20,
     textAlign: "center",
   },
   button: {
-    backgroundColor: "#d9534f",
+    backgroundColor: "#3C3D37",
     padding: 15,
     borderRadius: 8,
     alignItems: "center",
   },
   buttonText: {
-    color: "#ffffff",
+    color: "#ECDFCC",
     fontSize: 16,
     fontWeight: "bold",
   },
 });
 
 export default Home;
+
+

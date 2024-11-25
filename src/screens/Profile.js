@@ -61,6 +61,7 @@ export default class Profile extends Component {
   render() {
     return (
       <View style={styles.container}>
+         <Text style={styles.titlee}>¡Estas en el perfil!</Text>
         <Text style={styles.title}>{this.state.userName}</Text>
         <Text style={styles.subtitle}>{auth.currentUser.email}</Text>
         <Text>Cantidad de posteos: {this.state.posts.length}</Text>
@@ -83,30 +84,40 @@ export default class Profile extends Component {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
-    marginTop: 20,
     flex: 1,
+    backgroundColor: "#1E201E", 
+  },
+  titlee: {
+    fontSize: 28,
+    fontWeight: "bold",
+    marginBottom: 10,
+    color: "#ECDFCC",
+    textAlign: "center",
+
   },
   title: {
     fontSize: 28,
     fontWeight: "bold",
     marginBottom: 10,
-    color: "#333",
+    color: "#ECDFCC",
   },
   subtitle: {
     fontSize: 18,
     marginBottom: 20,
-    color: "#666",
+    color: "#697565", 
   },
   logoutButton: {
-    backgroundColor: "#d9534f",
+    backgroundColor: "#3C3D37",
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 8,
     alignItems: "center",
     marginTop: 10,
+    borderWidth: 1,
+    borderColor: "#697565",
   },
   logoutText: {
-    color: "white",
+    color: "#ECDFCC",
     fontWeight: "bold",
     fontSize: 16,
   },
