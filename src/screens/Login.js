@@ -35,7 +35,7 @@ export default class Login extends Component {
       .catch((error) => {
         console.log(error);
         this.setState({ error: "El mail y/o la contraseña son incorrectos" });
-      });
+      });  
   }
 
   render() {

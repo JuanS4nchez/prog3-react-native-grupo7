@@ -16,8 +16,16 @@ export default class Posts extends Component {
     super(props);
     this.state = {
       like: false,
-      cantLikes: 0,
+      cantLikes: this.props.posteo.data.likes.length,
     };
+  }
+
+  componentDidMount(){
+    if(this.props.posteo.data.likes.includes(auth.currentUser.email)){
+      this.setState({
+        like: true
+      })
+    }
   }
 
   deletePost = () => {
@@ -33,15 +41,29 @@ export default class Posts extends Component {
   };
 
   like() {
-    this.setState({
-      like: true,
-    });
+    db.collection("posts").doc(this.props.posteo.id).update({
+      likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
+    })
+    .then(() =>{ 
+      this.setState({
+        like: true,
+        cantLikes: this.props.posteo.data.likes.length
+      })
+    })
+
   }
 
   unLike() {
-    this.setState({
-      like: false,
-    });
+    db.collection("posts").doc(this.props.posteo.id).update({
+      likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
+    })
+    .then(() =>{ 
+      this.setState({
+        like: false,
+        cantLikes: this.props.posteo.data.likes.length
+      })
+    } )
+
   }
 
   render() {
