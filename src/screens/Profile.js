@@ -43,10 +43,11 @@ export default class Profile extends Component {
   }
 
   render() {
-    console.log("ARBOL", this.state.currentPosts)
+
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{auth.currentUser.email}</Text>
+        <Text style={styles.title}>{auth.currentUser.userName}</Text>
         <Text style={styles.subtitle}>Cantidad de posteos: {this.state.posts.length} </Text>
         <FlatList
           data={this.state.posts}
