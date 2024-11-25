@@ -5,7 +5,7 @@ import NuevoPost from "../screens/NuevoPost";
 import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Search from "../screens/Search";
 
 const Tab = createBottomTabNavigator();
@@ -23,7 +23,9 @@ const TabNavigation = () => {
         name="Search"
         component={Search}
         options={{
-          tabBarIcon: () => <FontAwesome name="search" size={24} color="black" />,
+          tabBarIcon: () => (
+            <FontAwesome name="search" size={24} color="black" />
+          ),
         }}
       />
       <Tab.Screen

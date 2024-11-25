@@ -20,11 +20,11 @@ export default class Posts extends Component {
     };
   }
 
-  componentDidMount(){
-    if(this.props.posteo.data.likes.includes(auth.currentUser.email)){
+  componentDidMount() {
+    if (this.props.posteo.data.likes.includes(auth.currentUser.email)) {
       this.setState({
-        like: true
-      })
+        like: true,
+      });
     }
   }
 
@@ -41,29 +41,33 @@ export default class Posts extends Component {
   };
 
   like() {
-    db.collection("posts").doc(this.props.posteo.id).update({
-      likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
-    })
-    .then(() =>{ 
-      this.setState({
-        like: true,
-        cantLikes: this.props.posteo.data.likes.length
+    db.collection("posts")
+      .doc(this.props.posteo.id)
+      .update({
+        likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email),
       })
-    })
-
+      .then(() => {
+        this.setState({
+          like: true,
+          cantLikes: this.props.posteo.data.likes.length,
+        });
+      });
   }
 
   unLike() {
-    db.collection("posts").doc(this.props.posteo.id).update({
-      likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
-    })
-    .then(() =>{ 
-      this.setState({
-        like: false,
-        cantLikes: this.props.posteo.data.likes.length
+    db.collection("posts")
+      .doc(this.props.posteo.id)
+      .update({
+        likes: firebase.firestore.FieldValue.arrayRemove(
+          auth.currentUser.email
+        ),
       })
-    } )
-
+      .then(() => {
+        this.setState({
+          like: false,
+          cantLikes: this.props.posteo.data.likes.length,
+        });
+      });
   }
 
   render() {

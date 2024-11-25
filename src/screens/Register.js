@@ -16,6 +16,9 @@ export default class Register extends Component {
       password: "",
       userName: "",
       registered: false,
+      errorMail: "",
+      errorPass: "",
+      errorName: "",
       error: "",
     };
   }
@@ -28,33 +31,81 @@ export default class Register extends Component {
     });
   }
 
-  handleRegister() {
-    auth
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then((response) => {
-        this.setState({ registered: true });
-        db.collection("users")
-          .add({
-            email: this.state.email,
-            userName: this.state.userName,
-            createdAt: Date.now(),
-          })
-          .then(() => this.props.navigation.navigate("Login"))
-          .catch((e) => console.log(e));
-      })
-      .catch((error) => {
-        console.log(error);
-        this.setState({ error: "El mail y/o la contraseña son invalidos" });
+  validateEmail() {
+    return this.state.email.includes("@");
+  }
+
+  validatePass() {
+    return this.state.password.length >= 6;
+  }
+
+  validateUserName() {
+    return this.state.userName !== "";
+  }
+
+  handleEmail() {
+    const email = this.state.email;
+    if (email === "") {
+      this.setState({ errorMail: "el email no puede estar vacio" });
+      return false;
+    } else if (!this.validateEmail(email)) {
+      this.setState({ errorMail: "el email debe contener @" });
+      return false;
+    } else {
+      this.setState({ errorMail: "" });
+      return true;
+    }
+  }
+
+  handlePass() {
+    const password = this.state.password;
+    if (password === "") {
+      this.setState({ errorPass: "la constraseña no puede estar vacia" });
+      return false;
+    } else if (!this.validatePass(password)) {
+      this.setState({
+        errorPass: "la contraseña debe tener mas de 6 caracteres",
       });
+      return false;
+    } else {
+      this.setState({ errorPass: "" });
+      return true;
+    }
+  }
+
+  isFormValid() {
+    const { email, password, userName } = this.state;
+    return email !== "" && password !== "" && userName !== "";
+  }
+
+  handleRegister() {
+    const isEmailValid = this.handleEmail();
+    const isPasswordValid = this.handlePass();
+    if (isEmailValid && isPasswordValid) {
+      auth
+        .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then((response) => {
+          this.setState({ registered: true });
+          db.collection("users")
+            .add({
+              email: this.state.email,
+              userName: this.state.userName,
+              createdAt: Date.now(),
+            })
+            .then(() => this.props.navigation.navigate("Login"))
+            .catch((e) => console.log(e));
+        })
+        .catch((error) => {
+          console.log(error);
+          this.setState({ error: "El mail y/o la contraseña son invalidos" });
+        });
+    }
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Registro</Text>
-        {this.state.error !== "" ? (
-          <Text style={styles.errorMsg}>{this.state.error}</Text>
-        ) : null}
         <TextInput
           style={styles.input}
           keyboardType="email-address"
@@ -62,6 +113,9 @@ export default class Register extends Component {
           onChangeText={(text) => this.setState({ email: text })}
           value={this.state.email}
         />
+        {this.state.errorMail ? (
+          <Text style={styles.errorMsg}>{this.state.errorMail}</Text>
+        ) : null}
         <TextInput
           style={styles.input}
           placeholder="password"
@@ -69,6 +123,9 @@ export default class Register extends Component {
           onChangeText={(text) => this.setState({ password: text })}
           value={this.state.password}
         />
+        {this.state.errorPass ? (
+          <Text style={styles.errorMsg}>{this.state.errorPass}</Text>
+        ) : null}
         <TextInput
           style={styles.input}
           placeholder="userName"
@@ -76,6 +133,7 @@ export default class Register extends Component {
           value={this.state.userName}
         />
         <TouchableOpacity
+          disabled={!this.isFormValid()}
           onPress={() => this.handleRegister()}
           style={styles.boton}
         >

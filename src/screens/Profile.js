@@ -15,6 +15,7 @@ export default class Profile extends Component {
     this.state = {
       posts: [],
       currentPosts: [],
+      userName: "",
       loading: true,
     };
   }
@@ -36,6 +37,21 @@ export default class Profile extends Component {
           loading: false,
         });
       });
+    db.collection("users")
+      .where("email", "==", auth.currentUser.email)
+      .onSnapshot((docs) => {
+        let users = [];
+        docs.forEach((doc) => {
+          users.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        console.log(users[0]);
+        this.setState({
+          userName: users[0].data.userName,
+        });
+      });
   }
 
   handleLogOut() {
@@ -43,12 +59,11 @@ export default class Profile extends Component {
   }
 
   render() {
-
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{auth.currentUser.email}</Text>
-        <Text style={styles.title}>{auth.currentUser.userName}</Text>
-        <Text style={styles.subtitle}>Cantidad de posteos: {this.state.posts.length} </Text>
+        <Text style={styles.title}>{this.state.userName}</Text>
+        <Text style={styles.subtitle}>{auth.currentUser.email}</Text>
+        <Text>Cantidad de posteos: {this.state.posts.length}</Text>
         <FlatList
           data={this.state.posts}
           keyExtractor={(item) => item.id.toString()}

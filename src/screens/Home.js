@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-} from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { auth, db } from "../firebase/config";
 import Posts from "../components/Posts";
 
@@ -12,9 +7,10 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
     };
   }
+
   componentDidMount() {
     db.collection("posts")
       .orderBy("createdAt", "desc")
@@ -35,6 +31,7 @@ class Home extends Component {
         );
       });
   }
+  
   render() {
     return (
       <View style={styles.container}>
